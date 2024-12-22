@@ -16,7 +16,7 @@ trap 'cleanup' EXIT SIGINT SIGTERM SIGHUP
 question() {
   mkfifo "${pstdin}"
 
-  tmux display-popup -h 10% -w 25% -b rounded -T " $1 " -E bash -c 'trap "echo > '${pstdin}';exit 0;" EXIT SIGINT SIGTERM SIGHUP; set -f; read -erp "> " ans </dev/tty && echo "${ans}" > '${pstdin} &
+  tmux display-popup -h 5% -w 25% -b rounded -T " $1 " -E bash -c 'trap "echo > '${pstdin}';exit 0;" EXIT SIGINT SIGTERM SIGHUP; set -f; read -erp "> " ans </dev/tty && echo "${ans}" > '${pstdin} &
 }
 
 sternscript='{
